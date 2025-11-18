@@ -1,0 +1,68 @@
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f4f7f6;
+}
+
+/* Favourites Panel Styling */
+.favourites-panel {
+  background: white;
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px dashed #ccc;
+  min-height: 150px;
+  transition: background-color 0.3s;
+}
+
+.favourites-panel.highlight {
+  background-color: #e8f4fd;
+  border-color: #007bff;
+}
+
+.fav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.fav-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+  font-size: 14px;
+}
+
+.fav-price {
+  font-weight: bold;
+  color: #27ae60;
+  margin-left: auto;
+  margin-right: 10px;
+}
+
+.remove-btn {
+  background: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  cursor: pointer;
+  padding: 0;
+  font-size: 12px;
+}
+
+.clear-btn {
+  width: 100%;
+  margin-top: 10px;
+  padding: 8px;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
