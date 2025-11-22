@@ -1,0 +1,40 @@
+.search-page-container {
+  display: flex;
+  flex-direction: row;
+  min-height: 100vh;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f8f9fa;
+}
+
+.sidebar {
+  width: 350px;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.results-section {
+  flex-grow: 1;
+}
+
+.fav-wrapper {
+  position: sticky;
+  top: 20px;
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+  .search-page-container {
+    flex-direction: column;
+  }
+  
+  .sidebar {
+    width: 100%;
+  }
+
+  .fav-wrapper {
+    position: static;
+  }
+}
