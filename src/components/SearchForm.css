@@ -1,0 +1,74 @@
+.search-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.search-form h3 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 10px;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box; /* padding doesn't break width */
+}
+
+/* Flex container for side-by-side inputs (Min/Max) */
+.form-row {
+  display: flex;
+  gap: 10px;
+}
+
+.form-row input, 
+.form-row .react-datepicker-wrapper {
+  flex: 1; /* Making them take equal width */
+}
+
+/* Style the DatePicker  */
+.date-input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.search-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: #2c3e50; 
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  font-weight: bold;
+}
+
+.search-btn:hover {
+  background-color: #1a252f;
+}
