@@ -3,7 +3,7 @@ import SearchForm from '../components/SearchForm';
 import PropertyCard from '../components/PropertyCard';
 import Favourites from '../components/Favourites';
 import { filterProperties } from '../utils/filterProperties';
-import propertiesData from '../data/properties.json';
+import propertiesData from '../data/Properties.json';
 import './SearchPage.css';
 
 const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
