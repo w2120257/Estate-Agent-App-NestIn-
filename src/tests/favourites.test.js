@@ -1,4 +1,4 @@
-// This tests logic, not UI rendering to keep it simple
+// tests logic
 test('dummy test for favourite logic presence', () => {
     const favs = [];
     const newFav = { id: 1 };
