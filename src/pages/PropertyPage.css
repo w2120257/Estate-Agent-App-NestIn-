@@ -1,25 +1,20 @@
-/* =========================================
-   THEME: BOTANICAL & STONE (Modern Luxury)
-   ========================================= */
-
-/* Import Fonts: 'Playfair Display' for headers, 'Lato' for text */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@600;700&display=swap');
 
 :root {
-  /* --- COLOR PALETTE --- */
-  --primary-green: #2F4F4F;   /* Dark Slate Grey/Green (Headers) */
-  --stone-bg: #F3F4F6;        /* Cool Light Grey (Background) */
-  --clay-accent: #A0522D;     /* Sienna/Bronze (Price & Accents) */
-  --text-main: #2D3436;       /* Soft Black (Body Text) */
-  --text-light: #636E72;      /* Muted Grey (Meta info) */
+  /*COLOR PALETTE */
+  --primary-green: #2F4F4F;   
+  --stone-bg: #F3F4F6;        
+  --clay-accent: #A0522D;     
+  --text-main: #2D3436;       
+  --text-light: #636E72;     
   
-  /* --- BUTTON SPECIFIC --- */
-  --btn-add: #7CB342;         /* Fresh Botanical Green */
-  --btn-remove: #EC407A;      /* Modern Rose Pink */
+  /*  BUTTON SPECIFIC*/
+  --btn-add: #7CB342;         
+  --btn-remove: #EC407A;     
 
-  /* --- UI VARIABLES --- */
+  /*UI VARIABLES */
   --radius: 12px;
-  --shadow-card: 0 10px 25px rgba(47, 79, 79, 0.1); /* Subtle green-tinted shadow */
+  --shadow-card: 0 10px 25px rgba(47, 79, 79, 0.1); 
 }
 
 body {
@@ -30,9 +25,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* =========================================
-   LAYOUT CONTAINER
-   ========================================= */
+/*Property layout container */
 .property-page-container {
   max-width: 1100px;
   margin: 2rem auto;
@@ -42,9 +35,7 @@ body {
   box-shadow: var(--shadow-card);
 }
 
-/* =========================================
-   TYPOGRAPHY
-   ========================================= */
+/* Typography */
 h1, h2, h3 {
   font-family: 'Playfair Display', serif;
   color: var(--primary-green);
@@ -64,9 +55,7 @@ h1 {
   font-family: 'Playfair Display', serif;
 }
 
-/* =========================================
-   BUTTONS
-   ========================================= */
+/* Buttons*/
 
 /* 1. Back Button */
 .back-btn {
@@ -95,7 +84,7 @@ h1 {
   font-size: 1rem;
   font-weight: 700;
   border: none;
-  border-radius: 50px; /* Pill shape */
+  border-radius: 50px; 
   cursor: pointer;
   transition: all 0.3s ease;
   text-transform: uppercase;
@@ -130,13 +119,11 @@ h1 {
   box-shadow: 0 6px 12px rgba(236, 64, 122, 0.3);
 }
 
-/* =========================================
-   SECTIONS (Hero, Header)
-   ========================================= */
+/* Hero section and header*/
 .property-header {
   display: flex;
   justify-content: space-between;
-  align-items: flex-end; /* Aligns price/button to bottom */
+  align-items: flex-end; /* Aligns price,button to bottom */
   border-bottom: 1px solid #eee;
   padding-bottom: 2rem;
   margin-bottom: 2rem;
@@ -163,7 +150,7 @@ h1 {
 .hero-img.fit-mode { object-fit: contain; background: #fff; }
 
 .hero-img:hover {
-  transform: scale(1.02); /* Subtle zoom */
+  transform: scale(1.02); /* Slight zoom */
 }
 
 .placeholder-img {
@@ -177,9 +164,7 @@ h1 {
   font-size: 1.2rem;
 }
 
-/* =========================================
-   TABS STYLING
-   ========================================= */
+/*Tabs styles*/
 .property-tabs {
   margin-top: 1rem;
 }
@@ -223,9 +208,7 @@ h1 {
   background-color: var(--primary-green);
 }
 
-/* =========================================
-   TAB CONTENT
-   ========================================= */
+/* Tabs content*/
 .tab-content {
   animation: fadeIn 0.4s ease;
 }
@@ -297,9 +280,7 @@ h1 {
 .center { text-align: center; }
 .hint-text { color: var(--text-light); font-style: italic; font-size: 0.9rem; margin-top: 0.5rem; }
 
-/* =========================================
-   CONTACT FORM (New Tab Style)
-   ========================================= */
+/* Contact form*/
 .contact-section {
   display: flex;
   flex-wrap: wrap;
@@ -347,9 +328,7 @@ h1 {
   background-color: #1e3333; /* Darker version of primary */
 }
 
-/* =========================================
-   RESPONSIVE
-   ========================================= */
+/* For responsiveness */
 @media (max-width: 768px) {
   .property-page-container {
     padding: 1.5rem;
@@ -370,13 +349,11 @@ h1 {
   }
 }
 
-/* =========================================
-   HEADER / NAVBAR STYLES
-   ========================================= */
+/* Header and nav bar stlyes */
 
-/* This targets the main top bar */
+/* targets the main top bar */
 header {
-  background-color: #2F4F4F; /* Dark Slate Green (Botanical Theme) */
+  background-color: #2F4F4F; 
   padding: 1rem 2rem;
   display: flex;
   align-items: center;
@@ -385,12 +362,12 @@ header {
   color: white;
 }
 
-/* This styles the text "NESTIN" */
+/* styles the text "NESTIN" */
 .logo-link {
   font-family: 'Playfair Display', serif;
   font-size: 1.8rem;
   font-weight: 700;
-  color: #FFFFFF ; /* Force White */
+  color: #FFFFFF ; 
   text-decoration: none;
   display: flex;
   align-items: center;
@@ -401,7 +378,6 @@ header {
   color: #fb057c !important; 
 }
 
-/* If you have navigation links */
 header nav a {
   color: #E2E8F0;
   text-decoration: none;
