@@ -7,8 +7,6 @@ import propertiesData from '../data/PropertiesData.json';
 import './SearchPage.css';
 
 const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
-  // Ensure propertiesData is treated correctly (if it's an object {properties: []} use propertiesData.properties)
-  // Based on your previous code, assuming propertiesData is the array:
   const [properties, setProperties] = useState(propertiesData.properties || propertiesData);
 
   const handleSearch = (criteria) => {
