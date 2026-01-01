@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, Link } from 'react-router-dom'; // Added Link import
+import { Routes, Route, Link } from 'react-router-dom';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 
@@ -55,17 +55,14 @@ function App() {
       <div className="app-container">
         
         {/* --- HEADER SECTION --- */}
-        {/* We use <header> so the CSS can target it for the Green Background */}
         <header>
           {/* Logo Link: Redirects to Home */}
           <Link to="/" className="logo-link">
             <span style={{ fontSize: '1.5rem', marginRight: '0.5rem' }}>🏡</span> 
             NESTIN
           </Link>
-          
-          {/* Navbar Links (Optional) */}
           <nav>
-             {/* You can add links here like: <Link to="/about">About</Link> */}
+             {/* I did not add any lijks to the nav bar. but i keep this line for knowlege and future use */}
           </nav>
         </header>
 
