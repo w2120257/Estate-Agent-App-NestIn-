@@ -1,4 +1,4 @@
-/* --- Global Resets --- */
+/* Global Resets */
 * {
   box-sizing: border-box;
 }
@@ -6,12 +6,11 @@
 body {
   margin: 0;
   font-family: 'Georgia', serif; 
-  /* 1. The Main Page Background -> Vintage Brown */
   background-color: #E6DCCF !important; 
   color: #333;
 }
 
-/* --- Header --- */
+/* Header */
 .main-nav {
   background-color: #2F4F4F; 
   color: white;
@@ -27,10 +26,9 @@ body {
   font-size: 1.8rem;
 }
 
-/* --- Layout --- */
+/* Layout*/
 .app-container {
   min-height: 100vh;
-  /* CRITICAL FIX: Make sure this wrapper is transparent */
   background-color: transparent !important;
 }
 
@@ -40,20 +38,17 @@ body {
   margin: 0 auto;
   padding: 2rem;
   gap: 2rem;
-  /* CRITICAL FIX: Remove the white background from the content wrapper */
   background-color: transparent !important;
 }
 
-/* --- Sidebar --- */
+/*Sidebar*/
 .sidebar {
   width: 300px;
   flex-shrink: 0;
-  /* Ensure sidebar itself doesn't have a white background */
   background-color: transparent; 
 }
 
 .search-form {
-  /* 2. Search Filter Section -> WHITE (as requested) */
   background-color: #FFFFFF; 
   padding: 1.5rem;
   border: 1px solid #ddd;
@@ -106,14 +101,13 @@ body {
   background-color: #1a3333; 
 }
 
-/* --- Results Section --- */
+/*Results Section*/
 .results-section {
   flex-grow: 1;
 }
 
 /* Property Grid Container */
 .property-grid {
-  /* 3. This matches the body background so it blends in perfectly */
   background-color: #E6DCCF; 
   
   padding: 2rem; 
@@ -124,7 +118,7 @@ body {
   gap: 2rem;
 }
 
-/* --- Property Card (White cards popping against brown) --- */
+/* Property Card*/
 .property-card {
   background: white;
   box-shadow: 0 4px 12px rgba(0,0,0,0.08);
@@ -182,7 +176,7 @@ body {
 .card-price {
   font-size: 1.5rem;
   font-weight: bold;
-  color: rgb(179, 11, 11) ; /* Bronze/Gold */
+  color: rgb(179, 11, 11) ; 
   margin-bottom: 1rem;
 }
 
@@ -205,7 +199,7 @@ body {
   margin-top: auto;
 }
 
-/* --- View Details Button --- */
+/*View details button*/
 .view-details-link {
   background-color: #57595B; 
   color: white;             
@@ -224,7 +218,7 @@ body {
   text-decoration: none;
 }
 
-/* ... other styles ... */
+/* other styles */
 .fav-icon-btn {
   background: none;
   border: none;
@@ -238,14 +232,14 @@ body {
   transform: scale(1.2);
 }
 
-/* --- Property Details Page --- */
+/*Property details page*/
 .property-page-container {
   max-width: 1000px;
   margin: 0 auto;
   padding: 2rem;
 }
 
-/* Back Button Style */
+/* Back button */
 .back-btn {
   background: none;
   border: none;
@@ -265,7 +259,7 @@ body {
   color: #A0522D; 
 }
 
-/* Details Card */
+/* Details card */
 .property-details-card {
   background: white;
   border-radius: 8px;
@@ -346,7 +340,7 @@ body {
   color: #444;
 }
 
-/* --- BUTTON STYLING --- */
+/* Button styling */
 
 .fav-action-btn {
   padding: 12px 28px;
@@ -417,15 +411,10 @@ header nav a {
   margin-left: 20px;
   font-weight: 600;
 }
-/* =========================================
-   RESPONSIVE DESIGN (MEDIA QUERIES)
-   Paste at the bottom of App.css
-   ========================================= */
+/* Media queries for responsiveness*/
 
 /* Tablet and Mobile Devices (Screens smaller than 900px) */
 @media (max-width: 900px) {
-  
-  /* 1. Stack the Main Layout (Sidebar on top, Results below) */
   .search-page-container {
     flex-direction: column;
     padding: 1rem;
@@ -453,7 +442,7 @@ header nav a {
   }
 
   header nav a {
-    margin: 0; /* Reset margin since we are using gap */
+    margin: 0; /* Reset margin since i used gap */
     font-size: 0.9rem;
   }
 }
