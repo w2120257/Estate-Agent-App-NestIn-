@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
-import propertiesData from '../data/properties.json';
+import propertiesData from '../data/Properties.json';
 import './PropertyPage.css';
 
 const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
