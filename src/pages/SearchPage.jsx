@@ -15,6 +15,15 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
     setProperties(results);
   };
 
+  // Helper to fix image paths for GitHub Pages
+  const getImagePath = (path) => {
+    if (!path) return '';
+    // Remove leading slash if it exists so we don't get double slashes
+    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+    // Combine the Repo Name (BASE_URL) with the image path
+    return `${import.meta.env.BASE_URL}${cleanPath}`;
+  };
+
   return (
     <div className="search-page-container">
       
@@ -42,7 +51,13 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
             {properties.map(property => (
               <PropertyCard 
                 key={property.id} 
-                property={property}
+                
+                // 👇 UPDATED: Use helper to fix image path before passing to card
+                property={{
+                  ...property,
+                  picture: getImagePath(property.picture)
+                }}
+                
                 isFav={favourites.some(f => f.id === property.id)}
                 onToggleFav={(prop) => {
                   if (favourites.some(f => f.id === prop.id)) {

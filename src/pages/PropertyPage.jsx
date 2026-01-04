@@ -58,7 +58,8 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
             <div className="hero-section">
                 {displayImage ? (
                     <img
-                        src={getImgPath(displayImage)}
+                        // Used getImagePath here
+                        src={getImagePath(displayImage)}
                         alt="Main view"
                         className={`hero-img ${displayImage === property.floorPlan ? 'fit-mode' : 'fill-mode'}`}
                     />
