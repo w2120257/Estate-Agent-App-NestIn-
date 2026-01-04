@@ -12,13 +12,11 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
     const [displayImage, setDisplayImage] = useState(null);
 
     useEffect(() => {
-        // Handle both array or object structure
         const dataList = propertiesData.properties || propertiesData;
         const found = dataList.find(p => p.id === id);
         setProperty(found);
 
         if (found) {
-            // Prioritize images array -> picture -> floorplan
             if (found.images && found.images.length > 0) {
                 setDisplayImage(found.images[0]);
             } else if (found.picture) {
@@ -33,10 +31,15 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
 
     const isFav = favourites.some(fav => fav.id === property.id);
 
-    // Helper to resolve image paths
-    const getImgPath = (path) => path ? (path.startsWith('/') ? path : `/${path}`) : '';
+    // this tells React to include my Repo Name in the link
+    const getImagePath = (path) => {
+        if (!path) return '';
+        // Remove the first slash so we don't get double slashes (//)
+        const cleanPath = path.startsWith('/') ? path.slice(1) : path;
+        // Combine Repo Name + Image Path
+        return `${import.meta.env.BASE_URL}${cleanPath}`;
+    };
 
-    // Handle fake form submission
     const handleContactSubmit = (e) => {
         e.preventDefault();
         alert(`Enquiry sent for ${property.location}!`);
@@ -44,8 +47,6 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
 
     return (
         <div className="property-page-container">
-
-            {/* BACK BUTTON*/}
             <button
                 className="back-btn"
                 onClick={() => navigate(-1)}
@@ -54,11 +55,11 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
                 ← Back to Search
             </button>
 
-            {/* 1. HERO SECTION */}
+            {/* HERO SECTION */}
             <div className="hero-section">
                 {displayImage ? (
                     <img
-                        // Used getImagePath here
+                    
                         src={getImagePath(displayImage)}
                         alt="Main view"
                         className={`hero-img ${displayImage === property.floorPlan ? 'fit-mode' : 'fill-mode'}`}
@@ -68,7 +69,7 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
                 )}
             </div>
 
-            {/* 2. HEADER INFO */}
+            {/* HEADER */}
             <div className="property-header">
                 <div className="header-left">
                     <h1>{property.location}</h1>
@@ -78,27 +79,20 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
                     onClick={() => isFav ? onRemoveFav(property.id) : onAddFav(property)}
                     className={`fav-action-btn ${isFav ? 'remove' : 'add'}`}
                 >
-                    {/* If Fav, show solid heart. If not, show outline or just text */}
-                    {isFav ? (
-                        <><span>♥</span> Saved to Favourites</>
-                    ) : (
-                        <><span>♡</span> Add to Favourites</>
-                    )}
+                    {isFav ? ( <><span>♥</span> Saved to Favourites</> ) : ( <><span>♡</span> Add to Favourites</> )}
                 </button>
             </div>
 
-            {/* 3. TABS */}
+            {/* TABS */}
             <Tabs className="property-tabs">
                 <TabList>
                     <Tab>Description</Tab>
                     <Tab>Gallery ({property.images ? property.images.length : 0})</Tab>
                     <Tab>Floor Plan</Tab>
                     <Tab>Map</Tab>
-                    {/* NEW TAB HEADER */}
                     <Tab>Contact</Tab>
                 </TabList>
 
-                {/* Tab 1: Description */}
                 <TabPanel>
                     <div className="tab-content">
                         <h3>Property Details</h3>
@@ -112,13 +106,13 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
                     </div>
                 </TabPanel>
 
-                {/* Tab 2: Gallery */}
                 <TabPanel>
                     <div className="gallery-grid">
                         {property.images && property.images.map((img, index) => (
                             <img
                                 key={index}
-                                src={getImgPath(img)}
+                                
+                                src={getImagePath(img)}
                                 alt={`View ${index + 1}`}
                                 onClick={() => setDisplayImage(img)}
                                 className={`gallery-item ${displayImage === img ? 'selected' : ''}`}
@@ -127,13 +121,13 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
                     </div>
                 </TabPanel>
 
-                {/* Tab 3: Floor Plan */}
                 <TabPanel>
                     <div className="tab-content center">
                         {property.floorPlan ? (
                             <>
                                 <img
-                                    src={getImgPath(property.floorPlan)}
+                              
+                                    src={getImagePath(property.floorPlan)}
                                     alt="Floorplan"
                                     className="floorplan-img clickable"
                                     onClick={() => setDisplayImage(property.floorPlan)}
@@ -147,13 +141,11 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
                     </div>
                 </TabPanel>
 
-                {/* Tab 4: Map */}
                 <TabPanel>
                     <div className="tab-content">
                         <iframe
                             width="100%"
                             height="400"
-                            // Standard Google Maps Embed
                             src={`https://maps.google.com/maps?q=${encodeURIComponent(property.location)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
                             frameBorder="0"
                             title="map"
@@ -161,7 +153,6 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
                     </div>
                 </TabPanel>
 
-                {/* Tab 5: Contact Agent (NEW) */}
                 <TabPanel>
                     <div className="tab-content contact-section">
                         <h3>Arrange a Viewing</h3>
@@ -170,7 +161,6 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
                             <p><strong>Ref:</strong> {property.id}</p>
                             <p><strong>Phone:</strong> <a href="tel:01234567890">01234 567 890</a></p>
                         </div>
-
                         <form onSubmit={handleContactSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '10px', maxWidth: '400px' }}>
                             <input type="text" placeholder="Your Name" required style={{ padding: '8px' }} />
                             <input type="email" placeholder="Your Email" required style={{ padding: '8px' }} />
@@ -180,7 +170,6 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
                         </form>
                     </div>
                 </TabPanel>
-
             </Tabs>
         </div>
     );
