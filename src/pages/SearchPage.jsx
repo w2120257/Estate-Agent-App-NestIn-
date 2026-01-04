@@ -25,6 +25,7 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
     <div className="search-page-container">
       <aside className="sidebar">
         <SearchForm onSearch={handleSearch} />
+        
         <div className="fav-wrapper">
           <Favourites 
             favourites={favourites} 
@@ -45,7 +46,7 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
                 key={property.id} 
                 property={{
                   ...property,
-                
+                 
                   picture: getImagePath(property.picture)
                 }}
                 isFav={favourites.some(f => f.id === property.id)}
