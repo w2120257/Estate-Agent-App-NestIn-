@@ -45,6 +45,7 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
                 key={property.id} 
                 property={{
                   ...property,
+                
                   picture: getImagePath(property.picture)
                 }}
                 isFav={favourites.some(f => f.id === property.id)}
