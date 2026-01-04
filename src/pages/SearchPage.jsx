@@ -15,12 +15,12 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
     setProperties(results);
   };
 
-
+ 
   const getImagePath = (path) => {
     if (!path) return '';
-    // Removing the first slash so we don't get double slashes (//)
+    // Removing the leading slash if it exists so we don't get double slashes (//)
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-    // Combining Repo Name + Image Path
+    // Combining Repo Name + Image Path (e.g., /NestIn/house1.jpg)
     return `${import.meta.env.BASE_URL}${cleanPath}`;
   };
 
