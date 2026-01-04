@@ -15,7 +15,7 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
     setProperties(results);
   };
 
-
+  
   const getImagePath = (path) => {
     if (!path) return '';
     
@@ -24,7 +24,7 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
 
     // 2. Checking if we are on GitHub Pages
     if (window.location.hostname.includes('github.io')) {
-   
+      
       return `/Estate-Agent-App-NestIn-/${filename}`;
     }
 
