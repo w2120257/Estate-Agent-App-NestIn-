@@ -7,21 +7,20 @@ import propertiesData from '../data/Properties.json';
 import './SearchPage.css';
 
 const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
-  // Load initial properties
   const [properties, setProperties] = useState(propertiesData.properties || propertiesData);
 
-  // Handle Search Logic
   const handleSearch = (criteria) => {
     const dataToFilter = propertiesData.properties || propertiesData;
     const results = filterProperties(dataToFilter, criteria);
     setProperties(results);
   };
-  
+
+
   const getImagePath = (path) => {
     if (!path) return '';
-    // Remove leading slash if it exists so we don't get double slashes
+    // Removing the first slash so we don't get double slashes (//)
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-    // Combined the Repo Name (BASE_URL) with the image path
+    // Combining Repo Name + Image Path
     return `${import.meta.env.BASE_URL}${cleanPath}`;
   };
 
@@ -53,7 +52,7 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
               <PropertyCard 
                 key={property.id} 
                 
-    
+              
                 property={{
                   ...property,
                   picture: getImagePath(property.picture)
