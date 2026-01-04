@@ -7,20 +7,21 @@ import propertiesData from '../data/Properties.json';
 import './SearchPage.css';
 
 const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
+  // Load initial properties
   const [properties, setProperties] = useState(propertiesData.properties || propertiesData);
 
+  // Handle Search Logic
   const handleSearch = (criteria) => {
     const dataToFilter = propertiesData.properties || propertiesData;
     const results = filterProperties(dataToFilter, criteria);
     setProperties(results);
   };
-
-  // Helper to fix image paths for GitHub Pages
+  
   const getImagePath = (path) => {
     if (!path) return '';
     // Remove leading slash if it exists so we don't get double slashes
     const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-    // Combine the Repo Name (BASE_URL) with the image path
+    // Combined the Repo Name (BASE_URL) with the image path
     return `${import.meta.env.BASE_URL}${cleanPath}`;
   };
 
@@ -31,7 +32,7 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
       <aside className="sidebar">
         <SearchForm onSearch={handleSearch} />
         
-        {/* Favourites Panel with Drag & Drop Logic */}
+        {/* Favourites Panel */}
         <div className="fav-wrapper">
           <Favourites 
             favourites={favourites} 
@@ -52,7 +53,7 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
               <PropertyCard 
                 key={property.id} 
                 
-                // 👇 UPDATED: Use helper to fix image path before passing to card
+    
                 property={{
                   ...property,
                   picture: getImagePath(property.picture)
