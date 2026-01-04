@@ -27,27 +27,30 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
         }
     }, [id]);
 
+    const getImagePath = (path) => {
+        if (!path) return '';
+        
+        if (path.startsWith('http')) return path;
+
+        let cleanPath = path.replace('/Estate-Agent-App-NestIn-', '');
+
+        if (cleanPath.startsWith('/')) {
+            cleanPath = cleanPath.substring(1);
+        }
+
+        return `${process.env.PUBLIC_URL}/${cleanPath}`;
+    };
+
     if (!property) return <div className="loading">Loading...</div>;
 
     const isFav = favourites.some(fav => fav.id === property.id);
-
-    const getImagePath = (path) => {
-        if (!path) return '';
-
-        if (path.includes('Estate-Agent-App-NestIn-')) {
-            return path;
-        }
-
-        const cleanPath = path.startsWith('/') ? path : `/${path}`;
-        return `/Estate-Agent-App-NestIn-${cleanPath}`;
-    };
 
     const handleContactSubmit = (e) => {
         e.preventDefault();
         alert(`Enquiry sent for ${property.location}!`);
     };
-    return (
 
+    return (
         <div className="property-page-container">
             <button
                 className="back-btn"
@@ -61,10 +64,14 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
             <div className="hero-section">
                 {displayImage ? (
                     <img
-
                         src={getImagePath(displayImage)}
                         alt="Main view"
                         className={`hero-img ${displayImage === property.floorPlan ? 'fit-mode' : 'fill-mode'}`}
+                        onError={(e) => {
+                          
+                            console.error("Failed to load:", e.target.src);
+                            e.target.style.display = 'none'; 
+                        }}
                     />
                 ) : (
                     <div className="placeholder-img">No Image Available</div>
@@ -113,7 +120,6 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
                         {property.images && property.images.map((img, index) => (
                             <img
                                 key={index}
-
                                 src={getImagePath(img)}
                                 alt={`View ${index + 1}`}
                                 onClick={() => setDisplayImage(img)}
@@ -128,7 +134,6 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
                         {property.floorPlan ? (
                             <>
                                 <img
-
                                     src={getImagePath(property.floorPlan)}
                                     alt="Floorplan"
                                     className="floorplan-img clickable"
@@ -145,6 +150,7 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
 
                 <TabPanel>
                     <div className="tab-content">
+                        {/* Fixed Google Map Embed URL */}
                         <iframe
                             width="100%"
                             height="400"
