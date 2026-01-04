@@ -18,18 +18,7 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
   
   const getImagePath = (path) => {
     if (!path) return '';
-    
-    // 1. Getting the clean filename (e.g., "house1.jpg")
-    const filename = path.startsWith('/') ? path.slice(1) : path;
-
-    // 2. Checking if we are on GitHub Pages
-    if (window.location.hostname.includes('github.io')) {
-      
-      return `/Estate-Agent-App-NestIn-/${filename}`;
-    }
-
-    // 3. Localhost
-    return `/${filename}`;
+    return path.startsWith('/') ? path.slice(1) : path;
   };
 
   return (
