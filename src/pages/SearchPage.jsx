@@ -15,19 +15,20 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
     setProperties(results);
   };
 
+
   const getImagePath = (path) => {
     if (!path) return '';
     
-    // 1. Striping any leading slash so we have just the filename (e.g. "house1.jpg")
+    // 1. Getting the clean filename (e.g., "house1.jpg")
     const filename = path.startsWith('/') ? path.slice(1) : path;
 
-  
+    // 2. Checking if we are on GitHub Pages
     if (window.location.hostname.includes('github.io')) {
-     
+   
       return `/Estate-Agent-App-NestIn-/${filename}`;
     }
 
-    // 3. Otherwise (Localhost), just return the normal path
+    // 3. Localhost
     return `/${filename}`;
   };
 
@@ -55,7 +56,6 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
                 key={property.id} 
                 property={{
                   ...property,
-                  // APPLY THE HARD FIX
                   picture: getImagePath(property.picture)
                 }}
                 isFav={favourites.some(f => f.id === property.id)}
