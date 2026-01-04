@@ -6,7 +6,8 @@ import './index.css'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+    {/* This line below is the fix: */}
+    <BrowserRouter basename="/Estate-Agent-App-NestIn-/">
       <App />
     </BrowserRouter>
   </React.StrictMode>,
