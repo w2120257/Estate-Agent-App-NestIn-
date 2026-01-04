@@ -31,21 +31,23 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
 
     const isFav = favourites.some(fav => fav.id === property.id);
 
-    // this tells React to include my Repo Name in the link
     const getImagePath = (path) => {
         if (!path) return '';
-        // Remove the first slash so we don't get double slashes (//)
-        const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-        // Combine Repo Name + Image Path
-        return `${import.meta.env.BASE_URL}${cleanPath}`;
+
+        if (path.includes('Estate-Agent-App-NestIn-')) {
+            return path;
+        }
+
+        const cleanPath = path.startsWith('/') ? path : `/${path}`;
+        return `/Estate-Agent-App-NestIn-${cleanPath}`;
     };
 
     const handleContactSubmit = (e) => {
         e.preventDefault();
         alert(`Enquiry sent for ${property.location}!`);
     };
-
     return (
+
         <div className="property-page-container">
             <button
                 className="back-btn"
@@ -59,7 +61,7 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
             <div className="hero-section">
                 {displayImage ? (
                     <img
-                    
+
                         src={getImagePath(displayImage)}
                         alt="Main view"
                         className={`hero-img ${displayImage === property.floorPlan ? 'fit-mode' : 'fill-mode'}`}
@@ -79,7 +81,7 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
                     onClick={() => isFav ? onRemoveFav(property.id) : onAddFav(property)}
                     className={`fav-action-btn ${isFav ? 'remove' : 'add'}`}
                 >
-                    {isFav ? ( <><span>♥</span> Saved to Favourites</> ) : ( <><span>♡</span> Add to Favourites</> )}
+                    {isFav ? (<><span>♥</span> Saved to Favourites</>) : (<><span>♡</span> Add to Favourites</>)}
                 </button>
             </div>
 
@@ -111,7 +113,7 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
                         {property.images && property.images.map((img, index) => (
                             <img
                                 key={index}
-                                
+
                                 src={getImagePath(img)}
                                 alt={`View ${index + 1}`}
                                 onClick={() => setDisplayImage(img)}
@@ -126,7 +128,7 @@ const PropertyPage = ({ onAddFav, onRemoveFav, favourites }) => {
                         {property.floorPlan ? (
                             <>
                                 <img
-                              
+
                                     src={getImagePath(property.floorPlan)}
                                     alt="Floorplan"
                                     className="floorplan-img clickable"
