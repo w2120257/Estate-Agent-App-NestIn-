@@ -15,23 +15,26 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
     setProperties(results);
   };
 
- 
   const getImagePath = (path) => {
     if (!path) return '';
-    // Removing the leading slash if it exists so we don't get double slashes (//)
-    const cleanPath = path.startsWith('/') ? path.slice(1) : path;
-    // Combining Repo Name + Image Path (e.g., /NestIn/house1.jpg)
-    return `${import.meta.env.BASE_URL}${cleanPath}`;
+    
+    // 1. Striping any leading slash so we have just the filename (e.g. "house1.jpg")
+    const filename = path.startsWith('/') ? path.slice(1) : path;
+
+  
+    if (window.location.hostname.includes('github.io')) {
+     
+      return `/Estate-Agent-App-NestIn-/${filename}`;
+    }
+
+    // 3. Otherwise (Localhost), just return the normal path
+    return `/${filename}`;
   };
 
   return (
     <div className="search-page-container">
-      
-      {/* SIDEBAR */}
       <aside className="sidebar">
         <SearchForm onSearch={handleSearch} />
-        
-        {/* Favourites Panel */}
         <div className="fav-wrapper">
           <Favourites 
             favourites={favourites} 
@@ -42,7 +45,6 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
         </div>
       </aside>
 
-      {/* MAIN RESULTS SECTION */}
       <main className="results-section">
         {properties.length === 0 ? (
           <div className="no-results">No properties found.</div>
@@ -51,13 +53,11 @@ const SearchPage = ({ favourites, onAddFav, onRemoveFav, onClearFavs }) => {
             {properties.map(property => (
               <PropertyCard 
                 key={property.id} 
-                
-              
                 property={{
                   ...property,
+                  // APPLY THE HARD FIX
                   picture: getImagePath(property.picture)
                 }}
-                
                 isFav={favourites.some(f => f.id === property.id)}
                 onToggleFav={(prop) => {
                   if (favourites.some(f => f.id === prop.id)) {
